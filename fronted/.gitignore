@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Production build
+build/
+
 # Environment variables
 .env
 .env.local
@@ -24,7 +27,3 @@ coverage/
 
 # Optional eslint cache
 .eslintcache
-
-# Build output
-dist/
-build/
