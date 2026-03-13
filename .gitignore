@@ -1,3 +1,7 @@
+# IDE
+.idea/
+.vscode/
+
 # Dependencies
 node_modules/
 
@@ -16,15 +20,14 @@ yarn-error.log*
 # Testing
 coverage/
 
-# Misc
+# OS
 .DS_Store
+Thumbs.db
+desktop.ini
+*~
 
 # Optional npm cache
 .npm
 
 # Optional eslint cache
 .eslintcache
-
-# Build output
-dist/
-build/
