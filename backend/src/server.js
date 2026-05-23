@@ -8,22 +8,22 @@ const errorHandler = require('./middleware/errorHandler');
 const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const contactRoutes = require('./routes/contactRoutes');
-const paymentRoutes = require('./routes/paymentRoutes'); // ⬅️ AGREGAR ESTA LÍNEA
+const paymentRoutes = require('./routes/paymentRoutes');
 
 // Initialize app
 const app = express();
 
-// Middleware
+// Middleware básico
 app.use(cors({ origin: config.corsOrigin }));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(logger);
 
 // Routes
 app.use(`${config.apiPrefix}/products`, productRoutes);
 app.use(`${config.apiPrefix}/orders`, orderRoutes);
 app.use(`${config.apiPrefix}/contact`, contactRoutes);
-app.use(`${config.apiPrefix}/payments`, paymentRoutes); // ⬅️ AGREGAR ESTA LÍNEA
+app.use(`${config.apiPrefix}/payments`, paymentRoutes);
 
 // Health check
 app.get('/health', (req, res) => {
@@ -42,7 +42,7 @@ app.use((req, res) => {
   });
 });
 
-// Error handler (debe ir al final)
+// Error handler
 app.use(errorHandler);
 
 // Start server
